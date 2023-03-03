@@ -5,6 +5,7 @@
 
 import platform
 import os
+print(platform.system())
 
 
 #Assign IP to ping to a variable
@@ -20,3 +21,5 @@ if exit_code == 0:
     print(f"{ip} is reachable")
 else:
     print(f"{ip} is unreachable")   
+
+
