@@ -17,7 +17,7 @@ current_os = platform.system().lower()
 for final_octet in range(12,23):
     #assign IP to ping to a variable
     #adding 1 to final_octet because loop starts at 0
-    ip = ip_prefix + str(final_octet)
+    ip = ip_prefix + str(final_octet + 1)
     print(f"this is pinging {ip} from {current_os}")
     
     if current_os == "Windows":

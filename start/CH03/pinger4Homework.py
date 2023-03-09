@@ -27,8 +27,14 @@ def ping_host(ip):
 start_ip = input("What is the IP address of the host you want to ping? ")
 octets = start_ip.split(".")
 last_octet = int(octets[3])
+
 prefix =octets[0]+"."+octets[1]+"."+octets[2]+"."
-new_last_octet = last_octet + 10
+ip_range = input("What is the range of IP addresses you want to ping? ")
+#this is ip
+new_last_octet = last_octet + int(ip_range)
+
+
+
 
 print(new_last_octet)
 print(f"This is the IP address of the host: {last_octet}")
@@ -38,7 +44,13 @@ print(f"This is the IP address of the host: {last_octet}")
 for final_octet in range(last_octet,new_last_octet):
     #assign ip address
     #adding 1 to the final octet
+
+    if(final_octet > 255):
+        print(f"You cannot ping more than 255 IP addresses in a single ping")
+        exit(1)
+
     ip = f"{prefix}{final_octet}"
+    
     print(f"This is the IP address of the host: {ip}")
     #call ping_host function and capture the return value.
 
@@ -49,6 +61,3 @@ for final_octet in range(last_octet,new_last_octet):
 
     if exit_code == 0:
         print("{0} is online.".format(ip))
-
-
-
