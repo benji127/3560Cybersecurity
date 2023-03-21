@@ -34,8 +34,6 @@ ip_range = input("What is the range of IP addresses you want to ping? ")
 new_last_octet = last_octet + int(ip_range)
 
 
-
-
 print(new_last_octet)
 print(f"This is the IP address of the host: {last_octet}")
 #new_ip_address = f"{octets[0]}.{octets[1]}.{octets[2]}.{new_last_octet}"
