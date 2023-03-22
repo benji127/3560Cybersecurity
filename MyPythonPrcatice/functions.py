@@ -19,4 +19,12 @@
 # print(f"The IP converted into decimal is: {decimal}")  # Output: 3232235777
 # ___________________________________________________________________________________________________
 
+def ip_str_to_num(ip_str):
+    ip_num = 0
+    octet = ip_str.split(".")
+    for pow in range(3, -1, -1):
+        ip_num += int(octet[3-pow]) * 256 ** pow
+    return ip_num
+
+ip_str_to_num(input(""))
 
