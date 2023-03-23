@@ -11,7 +11,7 @@ def calculate_subnet(ip_address):
     return subnet, num_hosts
 
 # Read IP addresses from input file
-input_file = 'input.txt'
+input_file = 'istofindsubnet.txt'
 with open(input_file, 'r') as f:
     ip_addresses = f.read().splitlines()
 

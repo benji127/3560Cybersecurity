@@ -30,28 +30,43 @@ def ping_host(ip):
 def write_log(message):
     now = str(datetime.now()) + "\t"
     message = now + str(message) + "\n"
-    f = open("PingAndScan.log", "a")
+    f = open("ImportedIPAndScan.log", "a")
     f.write(message)
     f.close()
 
-start_ip = input("What is the IP address of the host you want to ping? ")
-octets = start_ip.split(".")
-last_octet = int(octets[3])
+def import_addresses():
+    # Create empty list object
+    lines = []
+    # Open file and read line-by-line
+    f = open("../CH04/homeips.txt", "r")
+    for line in f:
+        # Use strip() to remove spaces and carriage returns
+        line = line.strip()
+        # Add the line to the lines list object
+        lines.append(line)
+    # Return the list object to the main body
+    return lines
 
-prefix =octets[0]+"."+octets[1]+"."+octets[2]+"."
-ip_range = input("What is the range of IP addresses you want to ping? ")
-#this is ip
-new_last_octet = last_octet + int(ip_range)
+#validate octets not bigger than 255
+def check_int_octets(ip):
+    octets = ip.split(".")
 
+    for octet in octets:
+        if int(octet) > 255:
+            print("Invalid IP address")
+            break
+    else:
+        print("Valid IP address")        
 
-print(new_last_octet)
-print(f"This is the IP address of the host: {last_octet}")
-#new_ip_address = f"{octets[0]}.{octets[1]}.{octets[2]}.{new_last_octet}"
-#print(new_ip_address)
+# read IPs from file
+ip_addresses = import_addresses()
+
 #Loop from 0-254
-for final_octet in range(last_octet,new_last_octet):
+for ip in ip_addresses:
     #assign ip address
-    #adding 1 to the final octet
+
+    #Call Validate IP octets function
+    check_int_octets(ip)
 
     # Scan ports
     port_start = 20
@@ -60,28 +75,25 @@ for final_octet in range(last_octet,new_last_octet):
     # Create the scanner object
     scanner = nmap.PortScanner()
 
-    target_address = f"{prefix}{final_octet}"
-
-    if(final_octet > 255):
-        print(f"You cannot ping more than 255 IP addresses in a single ping")
-        exit(1)
-
     # ip = f"{prefix}{final_octet}"
-    print(f"This is the IP address of the host: {target_address}")
+    print(f"This is the IP address of the host: {ip}")
+    
 
     #call ping_host function and capture the return value.
-    exit_code = ping_host(target_address)
+    exit_code = ping_host(ip)
+    write_log("Scanning {0}".format(ip))
+    print("Scanning {0}".format(ip))
+    
 
     #print results to console only if successful
     if exit_code == 0:
-        write_log("{0} is online.".format(target_address))
-        print("{0} is online.".format(target_address))
-
-        write_log("Scanning {0}".format(target_address))
-        print("Scanning {0}".format(target_address))
+        write_log("{0} is online.".format(ip))
+        print("{0} is online.".format(ip))
         # Loop through each port and scan
         for port in range(port_start, port_end):
-            result = scanner.scan(target_address, str(port))
-            port_status = result['scan'][target_address]['tcp'][port]['state']
+            result = scanner.scan(ip, str(port))
+            port_status = result['scan'][ip]['tcp'][port]['state']
             write_log("\tPort: {0} is {1}".format(port, port_status))
             print("\tPort: {0} is {1}".format(port, port_status))
+
+        
