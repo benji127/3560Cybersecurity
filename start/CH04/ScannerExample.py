@@ -9,11 +9,11 @@
 import nmap
 
 # Identify target address
-target_address = "10.0.2.15"
+target_address = "140.161.84.44"
 
 # Identify start and stop port for the scan
 port_start = 20
-port_end = 30
+port_end = 25
 
 # Create the scanner object
 scanner = nmap.PortScanner()

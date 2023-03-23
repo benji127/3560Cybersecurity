@@ -25,7 +25,7 @@ def import_addresses():
     # Create empty list object
     lines = []
     # Open file and read line-by-line
-    f = open("ips.txt", "r")
+    f = open("myips.txt", "r")
     for line in f:
         # Use strip() to remove spaces and carriage returns
         line = line.strip()
