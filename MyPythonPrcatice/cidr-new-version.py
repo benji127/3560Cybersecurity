@@ -80,9 +80,6 @@ out_file = open(sys.argv[2], "w") if len(sys.argv) > 2 else sys.stdout
 
 in_file = open(sys.argv[1], "r") if len(sys.argv) > 1 else sys.stdin
 
-print("ketu--> {in_file}")
-
-
 """
 # method 1
 while True:
@@ -96,7 +93,7 @@ while True:
 """
 # method 2
 for line in in_file:
-    print('test')
+    print(line)
     cidr_addr = line.strip().split("/")
     ip_num = ip_str_to_num(cidr_addr[0])
     cidr_num = int(cidr_addr[1])
