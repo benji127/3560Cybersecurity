@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 # Script that hashes a password with provided salt
-# By Ed Goad
-# date: 2/5/2021
+# By Enea Paja  
+# date: 2023/03/31
 
 # Import Python modules
 import crypt
 
 # Prompt user for plain-text password
-plain_pass = input("What is the password? ")
-salt = input("What is the salt? ")
+# plain_pass = input("What is the password? ")
+# salt = input("What is the salt? ")
+plain_pass="123456"
+salt = "addsalt"
 
 # Print out hashes
 print("MD5       : {0}".format(crypt.crypt( \

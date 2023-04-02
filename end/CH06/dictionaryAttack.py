@@ -4,8 +4,8 @@
 # Needs a dictionary file to run. Suggested to use 
 # https://github.com/danielmiessler/SecLists
 # /tree/master/Passwords/Common-Credentials
-# By Ed Goad
-# date: 2/5/2021
+# By Enea Paja  
+# date: 31/3/2023
 
 # Import necessary Python modules
 import crypt
@@ -31,8 +31,10 @@ def read_dictionary(dictionary_file):
 
 # Load dictionary file and prompt for hash and algorithm/salt
 password_dictionary = read_dictionary("top10.txt")
-hashed_password = input("What is the hashed password? ")
-algorithm_salt = input("What is the algorithm and salt? ")
+hashed_password = "$6$addsalt$czFlzkADZ8Eu2LA9tdS6MtKH42S62U4EVNjiy.NnOn0EwCUr82HTWqjnX/LTrmVCO5fO3lHej.8e1zkXaww7K0"
+algorithm_salt = "$6$addsalt$"
+# hashed_password = input("What is the hashed password? ")
+# algorithm_salt = input("What is the algorithm and salt? ")
 
 # For each password in dictionary file,
 # test against hashed_password

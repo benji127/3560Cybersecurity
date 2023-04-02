@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Script that hashes a password
-# By Ed Goad
-# date: 2/5/2021
+# By Enea Paja  
+# date: 2023/02/30
 
 # Import Python modules
 import crypt
