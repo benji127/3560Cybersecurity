@@ -5,9 +5,9 @@
 
 import hashlib 
 
-original_text_to_enc_epa_65 = "AVE CAESAR LEGIO X TE SALUTANT".lower()
-modified_text_to_enc_epa_65 = original_text_to_enc_epa_65.replace(" x " , " ix ")
-winner = ""
+original_text_to_enc_epa_65 = "AVECAESARLEGIOXTESALUTANT".lower()
+modified_text_to_enc_epa_65 = original_text_to_enc_epa_65.replace("x" , "ix")
+hash_name_epa_65 = ""
 
 # Convert message to lower-case for simplicity
 
@@ -34,27 +34,27 @@ def rot_13_epa_65(text_to_enc_epa_65):
 
 # Print the shortest value
 def get_the_lowest_digest_epa_65():
-    new_hash = -1
+    new_hash_epa_65 = -1
     for alg_epa_65 in hashlib.algorithms_available:
         hash_epa_65 = hashlib.new(alg_epa_65)
         if hash_epa_65.digest_size == 0:
             continue
-        elif new_hash == -1 or hash_epa_65.digest_size < new_hash:
-            new_hash = hash_epa_65.digest_size
-            winner = alg_epa_65
-    print(f"I am using : {winner}, because it is the lowest digest with size {new_hash}")    
-    return winner
+        elif new_hash_epa_65 == -1 or hash_epa_65.digest_size < new_hash_epa_65:
+            new_hash_epa_65 = hash_epa_65.digest_size
+            hash_name_epa_65 = alg_epa_65
+    print(f"I am using : {hash_name_epa_65}, because it is the lowest digest with size {new_hash_epa_65}")    
+    return hash_name_epa_65
 
 #hash function
 def hash_epa_65(text_to_hash_epa_65):
-    h_epa_65 = hashlib.new(winner)
+    h_epa_65 = hashlib.new(hash_name_epa_65)
     h_epa_65.update(text_to_hash_epa_65.encode())
 
     return h_epa_65.hexdigest()
 
 #Print the results 
 
-winner = get_the_lowest_digest_epa_65()
+hash_name_epa_65 = get_the_lowest_digest_epa_65()
 
 print (f"Original message:  {original_text_to_enc_epa_65}")
 print (f"Encrypted original message:  {rot_13_epa_65(original_text_to_enc_epa_65)}")
