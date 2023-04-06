@@ -27,6 +27,7 @@ How can we find somebody passwords --
 - Brute force attacks to get the has out of it
 - Dictionary attacks (create a subset of what combination could be used. Social Eng is invoolved) 
 
+excercise:
 
 In future I need to get the user and the password from the file -- maybe in Final!!!!
 

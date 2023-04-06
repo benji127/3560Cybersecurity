@@ -2,9 +2,6 @@
 #Enea Paja - Assignment4
 #2023-03-27
 
-
-
-
 #encrypt function
 def encrypt_epa_65(num_of_rotations_epa_65):
     path_epa_65 ="/home/enea6865/Desktop/Assignment4-epa-65/Part1-epa-65/Files-epa-65/"
@@ -89,25 +86,3 @@ while True:
             break
     else:
         print("Invalid Input of menu")
-
-
-
-
-
-
-
-
-
-
-#Assignmem44
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#

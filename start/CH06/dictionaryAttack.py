@@ -27,8 +27,11 @@ def read_dictionary(dictionary_file):
 
 # Load dictionary file and prompt for hash and algorithm/salt
 password_dictionary = read_dictionary("top10.txt")
-hashed_password = "$6$-addingsomesalt$lzPEKuO2.7PhtQG51eHe5dlZJC5GqbSI4qnZcN4HTY.U02ChQ.3O2m.kSks8jfADlF1nak6ltJDFs45ct5Ljb."
-algorithm_salt = "$6$-addingsomesalt"
+# hashed_password = "$6$-addingsomesalt$lzPEKuO2.7PhtQG51eHe5dlZJC5GqbSI4qnZcN4HTY.U02ChQ.3O2m.kSks8jfADlF1nak6ltJDFs45ct5Ljb."
+# algorithm_salt = "$6$-addingsomesalt"
+hashed_password = "$y$j9T$"
+algorithm_salt= "$y$j9T$IpRK1um9g6co537hieKAf0$EKceS4KoU.d6Mcpd8U7iTJAaHMH0BSvN6EhFJ/7Hpu."
+
 
 # For each password in dictionary file,
 # test against hashed_password
@@ -39,3 +42,5 @@ for password in password_dictionary.splitlines():
         # If a match is found, print it and quit
         print("Match found: {0}".format(password))
         break
+    else:
+        print("Password: {password} -- not found")
