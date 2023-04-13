@@ -2,6 +2,8 @@
 # Assignment5b - Enea Paja - 300356865
 
 # TODO -- write the public key to a separate file
+# Dont forget
+
 
 import os
 from cryptography.hazmat.primitives import hashes
