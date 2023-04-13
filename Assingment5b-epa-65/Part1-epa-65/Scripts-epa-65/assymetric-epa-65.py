@@ -1,37 +1,40 @@
 #!/usr/bin/env python3
 # Assignment5b - Enea Paja - 300356865
 
+# TODO -- write the public key to a separate file
+
+import os
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
+
 
 #Read function for global purspose
 def read_file_epa_65():
     file_to_read_epa_65= "../Files-epa-65/encryptedmessage.txt"
     try:
         string_epa_65_read = open(file_to_read_epa_65, "r")
-        string_epa_65 = string_epa_65_read.read()
-        print(string_epa_65)
-        
+        string_epa_65 = string_epa_65_read.read()        
     except OSError:
          print("The file is not correct")
+         os.system('echo "The file is not correct"> /dev/null 2>&1')
          return
     
-    return (string_epa_65.encode())    
+    return string_epa_65.encode()    
 
 
-#Read function for global purspose
+#Read binary cipher created function for global purspose
 def read_cipher_file_epa_65():
     file_to_read_epa_65= "../Files-epa-65/secondenryptedmessage.txt"
     try:
         string_epa_65_read = open(file_to_read_epa_65, "rb")
         string_cipher_epa_65 = string_epa_65_read.read()
-        print(string_cipher_epa_65)
         
     except OSError:
          print("The file is not correct")
+         os.system('echo "The file is not correct"> /dev/null 2>&1')
          return
     
-    return (string_cipher_epa_65)    
+    return string_cipher_epa_65
 
 
 #Write function for global purpose
@@ -42,17 +45,20 @@ def write_to_file_epa_65(content_epa_65):
     string_epa_65_write.write(content_epa_65)
     # Close the file
     string_epa_65_write.close()
-
+    
+    
+#Generate private key
 def generate_private_key_epa_65():
     # Generate the RSA private key
     key = rsa.generate_private_key(
         public_exponent=65537,
         key_size=2048,
     )
+    print(str(key))
     return key
 
+# Encrypt function using the private key we generated earlier and the original text from reading the file
 def encrypt(key,string_epa_65):
-# def message = b"secret text"
     ciphertext = key.public_key().encrypt(
         string_epa_65,
         padding.OAEP(
@@ -63,7 +69,7 @@ def encrypt(key,string_epa_65):
     )
     return ciphertext
 
-
+# Decrypt function using the encrypted private key 
 def decrypt_new(key,ciphertext):
     plaintext = key.decrypt(
         ciphertext,
@@ -75,7 +81,7 @@ def decrypt_new(key,ciphertext):
     )
     
     return plaintext
-
+# The key is generated out of the loop to avoid new generation
 key_epa_65 = generate_private_key_epa_65()
 
 # MAIN MENU
@@ -90,7 +96,7 @@ while True:
     # check if choice is one of the four options
     if choice in ('1', '2', '3'):
         if choice== '1':
-            #call the decrypt function
+            #call the encrypt function
             message_epa_65 = read_file_epa_65()
             enc_epa_65 = encrypt(key_epa_65, message_epa_65)
             
@@ -99,7 +105,7 @@ while True:
             write_to_file_epa_65(enc_epa_65)
             
         elif choice== '2':
-            #call the encrypt function
+            #call the decrypt function
             cipher =read_cipher_file_epa_65()
             dec_epa_65 = decrypt_new(key_epa_65,cipher)
             
@@ -112,3 +118,6 @@ while True:
             break    
     else:
         print("Invalid Input of menu \n")
+        os.system('echo "Invalid Input of menu" > /dev/null 2>&1 ')
+        
+        
