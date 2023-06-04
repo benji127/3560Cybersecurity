@@ -1,7 +1,7 @@
-# PythonforCybersecurity
+# Cybersecurity Scripting - CSIS3560 Douglas College
 
-Overview
-Course Description
+```Overview```
+## Course Description
 This course will provide students with a comprehensive introduction to scripting and automation within the context of information security including systems administration, text processing, alerting and more. This is a lab-based course consisting of three modules. First students receive an introduction to the Linux operating system, including bash shell scripting, text processing and basic *nix commands in a command-line environment. The second part covers Windows operating system topics focusing on PowerShell, automation for various infrastructure and operational tasks, data analysis, and using internal windows system components such as WMI and WinRM to analyze system state information. PowerShell will also be used to cover some of the topics mentioned above. The third part of the course will focus on tools for individual use and customization requirements in addition to automation using Python. This course will equip students with a practical hands-on knowledge, literacy, tools and languages to help them succeed in the CyberSecurity Program.
 Course Content
 
